@@ -43,7 +43,7 @@
 			}
 		})
 		.fail(function(a){
-			$controller.log('SITE FAILURE');
+			errorHandler.apply(this,arguments);
 		});
 	};
 	
