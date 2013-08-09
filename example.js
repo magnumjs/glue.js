@@ -1,4 +1,4 @@
-var TodosDetails=function(){
+var service1=function(){
   TodosDetails = function(data) {
 		$.extend(this, data);
 	};
@@ -18,7 +18,7 @@ var converter=function(d){
 };
 $.ajaxSetup({crossDomain:true,dataType:'jsonp',jsonpCallback: 'converter'});
 
-mag.service(['TodosDetails'],function(d){
+mag.service(['service1'],function(d){
  $('div').text(d.items[0].sample);
 });
   
