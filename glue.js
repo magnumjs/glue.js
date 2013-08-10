@@ -17,15 +17,13 @@
  */
  
  'use strict';
-
 mag.service = function (serviceNamesArray, callback, errorHandler) {
-
 
     var cachedScriptPromises = {};
     _cachedGet = function (name) {
         if (!cachedScriptPromises[name]) {
             cachedScriptPromises[name] = $.Deferred(function (defer) {
-                window[name]().get().then(defer.resolve, defer.reject);
+                window[name]().then(defer.resolve, defer.reject);
             }).promise();
         }
         return cachedScriptPromises[name];
@@ -38,9 +36,8 @@ mag.service = function (serviceNamesArray, callback, errorHandler) {
         newList[i] = _cachedGet(serviceNamesArray[i]);
     }
     $.when.apply($, newList)
-        .done(function () {
+      .done(function () {
                 callback.apply(this, arguments);
-            }
     })
     .fail(function (a) {
         errorHandler.apply(this, arguments);
