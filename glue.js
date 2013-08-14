@@ -17,13 +17,13 @@
  */
  
  'use strict';
-mag.service = function (serviceNamesArray, callback, errorHandler) {
+mag.service = function (serviceNamesArray, callback, progressHandler, errorHandler) {
 
     var cachedScriptPromises = {};
     _cachedGet = function (name) {
         if (!cachedScriptPromises[name]) {
             cachedScriptPromises[name] = $.Deferred(function (defer) {
-                window[name]().then(defer.resolve, defer.reject);
+                window[name]().then(defer.resolve, defer.reject, defer.progress);
             }).promise();
         }
         return cachedScriptPromises[name];
@@ -36,7 +36,10 @@ mag.service = function (serviceNamesArray, callback, errorHandler) {
         newList[i] = _cachedGet(serviceNamesArray[i]);
     }
     $.when.apply($, newList)
-      .done(function () {
+     .progress(function () {
+                progressHandler.apply(this, arguments);
+    })
+     .done(function () {
                 callback.apply(this, arguments);
     })
     .fail(function (a) {
