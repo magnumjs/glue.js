@@ -3,6 +3,7 @@ glue.js
 
 Magnum JS - data service modeling butler used by StaplesJS
 
+<a href="http://plnkr.co/edit/mHVGv3QwLRBc9F08awwd?p=preview">Plunker</a>
 
 <a href="example.html">Glue example</a>
 
