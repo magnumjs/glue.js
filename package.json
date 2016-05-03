@@ -1,0 +1,11 @@
+{
+	"name": "glue.js",
+	"version": "0.0.1",
+	"description": "Tiny core JS libraries to start a new clean project",
+	"main": "index.js",
+	"scripts": {
+		"test": "node ospec/bin/ospec"
+	},
+	"author": "Michael Glazer",
+	"license": "MIT"
+}
