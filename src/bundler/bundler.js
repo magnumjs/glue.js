@@ -1,4 +1,5 @@
-"use strict"
+//From: https://github.com/lhorie/mithril.js/blob/rewrite/bundler/README.md
+"use strict";
 
 var fs = require("fs")
 var path = require("path")
